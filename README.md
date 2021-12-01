@@ -10,5 +10,5 @@ Este repositório abriga as soluções dos desafio do [Advent of Code 2021](http
 ## Participantes e soluções
 - [João Pinto ()](./joao_pinto)
 - [João Vitor()](./joao_vitor)
-- [Math (Haskell)](./math/)
+- [Math (Haskell/Elixir)](./math/)
 - [Otávio ()](./otavio)
