@@ -15,8 +15,6 @@ part01 = Part01.productPositions . Part01.getFinalPosition
 part02 :: [Move] -> Int
 part02 = Part02.productPositions . Part02.getFinalPosition
 
-teste = [Forward 5, Down 5, Forward 8, Up 3, Down 8, Forward 2]
-
 main :: FilePath -> IO ()
 main inputPath = do
   input <- readFile inputPath
