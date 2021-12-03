@@ -7,8 +7,3 @@ Este repositório abriga as soluções dos desafio do [Advent of Code 2021](http
 - [João Vitor()](./joao_vitor)
 - [Math (Haskell/Elixir)](./math/)
 - [Otávio ()](./otavio)
-
-<div align="center" style="width: 100%">
-  <img align="right" width="120" height="85" src="./assets/uenf.png" />
-  <img align="right" width="120" height="85" src="./assets/cc.png" />
-</div>
