@@ -33,6 +33,10 @@
             # langs
             ## C
             gcc
+            # python
+            python3
+            # js
+            nodejs
             ## elixir
             elixir_1_12
             ## haskell
