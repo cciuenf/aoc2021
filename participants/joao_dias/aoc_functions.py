@@ -3,7 +3,7 @@
 # import os
 import importlib
 import pandas as pd
-import xlrd             # Reading an excel file using Python
+# import xlrd             # Reading an excel file using Python
 
 def get_daynum(day_number, day_prefix='day', terminator='_'):
     ''' receives:   a numeric value that refers to the day
@@ -54,30 +54,41 @@ def get_data(day_number=0, middle_char = '/', file_sufix = 'data.txt'):
     data_list = dataframe_to_list(dataframe_from_pandas)
     return data_list
 
-def try_reading_from_excel():
-    ''' receives:   nothing yet
-        returns:    nothing yet
+def reading_answers_from_excel(day_number, path='solutions.xlsx'):
+    ''' receives:   a numeric value that refers to the day
+                    path to the excel file
+        returns:    nothing
     '''
-    path = ('solutions.xlsx')          # Give the location of the file
-    wb = xlrd.open_workbook(path)    # To open Workbook
-    sheet = wb.sheet_by_index(0)
-    print(sheet.cell_value(0, 0))   # For row 0 and column 0
+    sheet_number = 2*day_number - 2
+    result_list = []
+    workbook = pd.read_excel(path, header=None, sheet_name=sheet_number)
+    lista = dataframe_to_list(workbook)
+    result_list.append(int(lista[0]))
+    sheet_number += 1
+    workbook = pd.read_excel(path, header=None, sheet_name=sheet_number)
+    lista = dataframe_to_list(workbook)
+    result_list.append(int(lista[0]))
+
+    print('\nEXCEL:')
+    print(result_list[0])
+    print(result_list[1])
 
 def challenge_of_the_day(day_number):
     ''' receives:   a numeric value that refers to the day challenge
         and then executes the functions from this day's challenge'''
     data = get_data(day_number)
     daily_func = get_imported_package(day_number)
+    print('CODE:')
     daily_func.part1(data)
     daily_func.part2(data)
-    try_reading_from_excel()
+    reading_answers_from_excel(day_number)
 
 def spaces(number_of_spaces=3):
     ''' receives:   the number of spaces to have
         then:       prints "\\n" n times'''
     print(number_of_spaces*'\n')
 
-def main(day_number=1):
+def main(day_number=2):
     '''spaces the print on terminal and calls the challenge of the day'''
     spaces()
     challenge_of_the_day(day_number)
