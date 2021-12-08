@@ -66,7 +66,7 @@ def spaces(number_of_spaces=3):
         then:       prints "\\n" n times'''
     print(number_of_spaces*'\n')
 
-def main(day_number=2):
+def main(day_number=1):
     '''spaces the print on terminal and calls the challenge of the day'''
     spaces()
     challenge_of_the_day(day_number)

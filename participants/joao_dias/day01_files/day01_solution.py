@@ -1,29 +1,24 @@
-"""This is the script for Advent of Code 2021
-https://adventofcode.com/2021/day/1
-"""
+'''This is the script for Advent of Code 2021
+https://adventofcode.com/2021/day/1 '''
+
 def part1(data):
-    """This return the number of data that are bigger than previous"""
-    previous_value = -1
+    ''' compares the values of an element and its previous value
+        if element is bigger, adds one to a counter'''
     number_of_increments = 0
-    for elem in data:
-        if (elem > previous_value) and (previous_value != -1):
+    for i in range(1,len(data)):
+        if data[i] > data[i-1]:
             number_of_increments+=1
-        previous_value = elem
     print(number_of_increments)
 
 def part2(data):
-    """Prints the number of interval increments"""
-    previous_sum = -1
+    ''' compares the values of the sum of 3 element and its previous sum
+        if sum is bigger, adds one to a counter'''
     number_of_increments = 0
-    # for i in range (len(data)):
-    # for i, _ in enumerate(data):
-    for i, elem in enumerate(data):
-        if i<=len(data)-3:
-            new_sum = elem+data[i+1]+data[i+2]
-            #new_sum = data[i]+data[i+1]+data[i+2]
-            if i == 0:
-                previous_sum = new_sum
-            elif new_sum > previous_sum:
-                number_of_increments += 1
-            previous_sum = new_sum
+    i=3
+    old_sum = data[i-3] + data[i-2] + data[i-1]
+    for i in range (3,len(data)):
+        new_sum = data[i-2] + data[i-1] + data[i-0]
+        if new_sum > old_sum:
+            number_of_increments += 1
+        old_sum = new_sum
     print (number_of_increments)
