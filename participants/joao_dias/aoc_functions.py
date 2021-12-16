@@ -68,20 +68,26 @@ def reading_answers_from_excel(day_number, path='solutions.xlsx'):
     workbook = pd.read_excel(path, header=None, sheet_name=sheet_number)
     lista = dataframe_to_list(workbook)
     result_list.append(int(lista[0]))
+    return result_list
 
-    print('\nEXCEL:')
-    print(result_list[0])
-    print(result_list[1])
+def print_results(excel_results, data, day_number, daily_func):
+    '''Prints the results from code and Excel'''
+    print('D'+str(day_number)+'P1 (Code ):  ', end='')
+    daily_func.part1(data)
+    print('D'+str(day_number)+'P1 (Excel):  ', end='')
+    print(excel_results[0])
+    print('D'+str(day_number)+'P2 (Code ):  ', end='')
+    daily_func.part2(data)
+    print('D'+str(day_number)+'P2 (Excel):  ', end='')
+    print(excel_results[1])
 
 def challenge_of_the_day(day_number):
     ''' receives:   a numeric value that refers to the day challenge
         and then executes the functions from this day's challenge'''
     data = get_data(day_number)
     daily_func = get_imported_package(day_number)
-    print('CODE:')
-    daily_func.part1(data)
-    daily_func.part2(data)
-    reading_answers_from_excel(day_number)
+    excel_results = reading_answers_from_excel(day_number)
+    print_results(excel_results, data, day_number, daily_func)
 
 def spaces(number_of_spaces=3):
     ''' receives:   the number of spaces to have
