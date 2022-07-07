@@ -4,8 +4,8 @@ Este repositório abriga as soluções dos desafio do [Advent of Code 2021](http
 
 ## Participantes e soluções
 - [João Pinto (Python)](./jpinto/)
-- [João Vitor()](./joao_vitor)
-- [Math (Haskell/Elixir)](./math/)
+- [João Dias (Python + Excel)](./joao_vitor)
+- [Zoey (Haskell/Elixir)](./math/)
 - [Otávio ()](./otavio)
 
 <div align="center" style="width: 100%">
