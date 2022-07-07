@@ -4,7 +4,7 @@ Este repositório abriga as soluções dos desafio do [Advent of Code 2021](http
 
 ## Participantes e soluções
 - [João Pinto (Python)](./jpinto/)
-- [João Dias (Python + Excel)](./joao_vitor)
+- [João Dias (Python + Excel)][jvfd3]
 - [Zoey (Haskell/Elixir)](./math/)
 - [Otávio ()](./otavio)
 
@@ -12,3 +12,5 @@ Este repositório abriga as soluções dos desafio do [Advent of Code 2021](http
   <img align="right" width="120" height="85" src="./assets/uenf.png" />
   <img align="right" width="120" height="85" src="./assets/cc.png" />
 </div>
+
+[jvfd3]: https://github.com/cciuenf/aoc2021/tree/main/participants/joao_dias "Aoba"
