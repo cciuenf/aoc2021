@@ -10,25 +10,24 @@ def get_daynum(day_number, day_prefix='day', terminator='_'):
                     the prefix of the day
                     a terminator character
         returns:    a string "day"+number+"terminator" '''
-    day_str = ''
-    if day_number < 10:
-        day_str += '0'
+    day_str = '0' if day_number < 10 else ''
     day_str += str(day_number)
     day = day_prefix+day_str+terminator
     return day
 
-def get_path(day_number, middle_char, file_sufix, folder_sufix='files'):
+def get_path(day_number, middle_char, file_sufix, folder_sufix='files', parent_folder= 'days'):
     ''' receives:   a numeric value that refers to the day
                     the middle char that separates folder and datafile names
                     the sufix of the file containing informations
                     the sufix of the folder that contains the info of a day-challenge
         returns:    the path to read data'''
     day = get_daynum(day_number)
-    return day+folder_sufix+middle_char+day+file_sufix
+    # return day+folder_sufix+middle_char+day+file_sufix
+    return parent_folder+middle_char+day+folder_sufix+middle_char+day+file_sufix
 
 def get_imported_package(day_number, middle_char = '.', file_sufix = 'solution'):
     ''' receives:   a numeric value that refers to the day
-                    the middle char that separates folder and datafile names
+                    the middle char that separates folders and datafile names
                     the sufix of the file containing the functions
         returns:    the object(?) of a file that has the functions part1 and part2'''
     module_to_import = get_path(day_number, middle_char, file_sufix)
@@ -94,7 +93,7 @@ def spaces(number_of_spaces=3):
         then:       prints "\\n" n times'''
     print(number_of_spaces*'\n')
 
-def main(day_number=2):
+def main(day_number=3):
     '''spaces the print on terminal and calls the challenge of the day'''
     spaces()
     challenge_of_the_day(day_number)
