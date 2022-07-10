@@ -93,5 +93,6 @@ def part2(data):
     n_data = get_new_data_set(data)
     oxygen_generator_rating = get_ratings (n_data,0)
     co2_scrubber_rating = get_ratings (n_data,1)
+    print(oxygen_generator_rating, co2_scrubber_rating)
     p2_solution = multiply_binary (oxygen_generator_rating, co2_scrubber_rating)
     return p2_solution
