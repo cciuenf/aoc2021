@@ -58,35 +58,54 @@ def reading_answers_from_excel(day_number, path='solutions.xlsx'):
                     path to the excel file
         returns:    nothing
     '''
-    sheet_number = 2*day_number - 2
-    result_list = []
-    workbook = pd.read_excel(path, header=None, sheet_name=sheet_number)
-    lista = dataframe_to_list(workbook)
-    result_list.append(int(lista[0]))
-    sheet_number += 1
-    workbook = pd.read_excel(path, header=None, sheet_name=sheet_number)
-    lista = dataframe_to_list(workbook)
-    result_list.append(int(lista[0]))
-    return result_list
+    def get_excel_answer (sheet_number):
+        workbook = pd.read_excel(path, header=None, sheet_name=sheet_number)
+        lista = dataframe_to_list(workbook)
+        answer = int(lista[0])
+        return answer
 
-def print_results(excel_results, data, day_number, daily_func):
+    sheet_number = 2*day_number - 2
+    part1 = get_excel_answer(sheet_number)
+    part2 = get_excel_answer(sheet_number+1)
+    return [part1, part2]
+
+def reading_answers_from_python(day_number, data):
+    '''Centralized function to get python solutions'''
+    daily_func = get_imported_package(day_number)
+    part1 = daily_func.part1(data)
+    part2 = daily_func.part2(data)
+    return [part1, part2]
+
+def get_results (day_number, data):
+    ''' Centralized function to get all results from data and structure them '''
+    excel_results = reading_answers_from_excel(day_number)
+    python_results = reading_answers_from_python(day_number, data)
+    results = {
+        'P1': {
+            'Python': python_results[0],
+            'Excel': excel_results[0],
+        },
+        'P2': {
+            'Python': python_results[1],
+            'Excel': excel_results[1],
+        },
+    }
+    return results
+
+def print_results(day_number, results):
     '''Prints the results from code and Excel'''
-    print('D'+str(day_number)+'P1 (Code ):  ', end='')
-    daily_func.part1(data)
-    print('D'+str(day_number)+'P1 (Excel):  ', end='')
-    print(excel_results[0])
-    print('D'+str(day_number)+'P2 (Code ):  ', end='')
-    daily_func.part2(data)
-    print('D'+str(day_number)+'P2 (Excel):  ', end='')
-    print(excel_results[1])
+    day = str(day_number)
+    print('D'+day+'P1 (Code ):  ', results['P1']['Python'])
+    print('D'+day+'P1 (Excel):  ', results['P1']['Excel' ])
+    print('D'+day+'P2 (Code ):  ', results['P2']['Python'])
+    print('D'+day+'P2 (Excel):  ', results['P2']['Excel' ])
 
 def challenge_of_the_day(day_number):
     ''' receives:   a numeric value that refers to the day challenge
         and then executes the functions from this day's challenge'''
     data = get_data(day_number)
-    daily_func = get_imported_package(day_number)
-    excel_results = reading_answers_from_excel(day_number)
-    print_results(excel_results, data, day_number, daily_func)
+    results = get_results(day_number, data)
+    print_results(day_number, results)
 
 def spaces(number_of_spaces=3):
     ''' receives:   the number of spaces to have
