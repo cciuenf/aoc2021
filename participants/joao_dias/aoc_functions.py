@@ -49,9 +49,9 @@ def get_data(day_number=0, middle_char = '/', file_sufix = 'data.txt'):
                     the sufix of the file containing data
         returns:    a list of data'''
     path = get_path(day_number, middle_char, file_sufix)
-    dataframe_from_pandas = pd.read_csv(path, header=None)
-    data_list = dataframe_to_list(dataframe_from_pandas)
-    return data_list
+    with open(path, encoding='UTF-8') as file:
+        lines = file.readlines()
+    return lines
 
 def reading_answers_from_excel(day_number, path='solutions.xlsx'):
     ''' receives:   a numeric value that refers to the day
@@ -112,7 +112,7 @@ def spaces(number_of_spaces=3):
         then:       prints "\\n" n times'''
     print(number_of_spaces*'\n')
 
-def main(day_number=3):
+def main(day_number=4):
     '''spaces the print on terminal and calls the challenge of the day'''
     spaces()
     challenge_of_the_day(day_number)
